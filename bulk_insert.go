@@ -44,11 +44,11 @@ func insertObjSet(db *gorm.DB, objects []interface{}, excludeColumns ...string) 
 	placeholders := make([]string, 0, attrSize)
 
 	// Replace with database column name
-	dbColumns := make([]string, 0, attrSize)
-	for _, key := range sortedKeys(firstAttrs) {
-		dbColumns = append(dbColumns, mainScope.Quote(gorm.ToColumnName(key)))
-	}
-
+	//dbColumns := make([]string, 0, attrSize)
+	//for _, key := range sortedKeys(firstAttrs) {
+	//	dbColumns = append(dbColumns, mainScope.Quote(gorm.ToColumnName(key)))
+	//}
+	dbColumns := sortedKeys(firstAttrs)
 	fmt.Printf("gorm-bulk-insert %v", dbColumns)
 	for _, obj := range objects {
 		objAttrs, err := extractMapValue(obj, excludeColumns)
