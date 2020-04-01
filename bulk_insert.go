@@ -49,6 +49,7 @@ func insertObjSet(db *gorm.DB, objects []interface{}, excludeColumns ...string) 
 		dbColumns = append(dbColumns, mainScope.Quote(gorm.ToColumnName(key)))
 	}
 
+	fmt.Printf("gorm-bulk-insert %v", dbColumns)
 	for _, obj := range objects {
 		objAttrs, err := extractMapValue(obj, excludeColumns)
 		if err != nil {
